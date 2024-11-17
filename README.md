@@ -12,7 +12,7 @@ Inside of the data directory there is a file called "transaction_data_daily_even
 
 Use grep to find all instances where the upload was initiated. 
 ```
-grep "upload_started" transaction_data_daily_event_log_20190129.dat
+grep "start" transaction_data_daily_event_log_20190129.dat
 ```
 
 Once you've reviewed these results, repeat the process but this time using the -c flag to determine how many matching occurences were found.
@@ -54,13 +54,13 @@ Inside the data directory, there is a file called "users.csv". This file contain
 
 Identify users that have email addresses with six or less characters before the @ symbol where none of these characters are numbers.
 ```
-PROVIDE A SOLUTION HERE
+grep -E ',[^0-9]{1,6}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,},' users.csv
 ```
 
 
 Marketing research has shown that the paper business is picking up in the academia space. Corporate has requested a list of all registered users that have an edu emaill address. Use grep to find the appropriate lines and output the results to a file called academia_users.txt.
 ```
-PROVIDE A SOLUTION HERE
+grep -E ',.+@.+\.edu,' users.csv > academia_users.txt
 ```
 
 
@@ -70,7 +70,7 @@ Ryan Howard did a poor job and used the CC field rather than the BCC field for t
 
 Use grep to identify the user with a single regex pattern.
 ```
-PROVIDE A SOLUTION HERE
+grep -E '184\.[0-9]+\.[0-9]+\.[0-9]+,38.+' users.csv
 ```
 
 
@@ -101,5 +101,5 @@ This regex expression will ultimately be part of an automated data pipeline so w
 * Each field must be separated by a tab character.
 
 ```
-PROVIDE A SOLUTION HERE
+grep -E '^[0-9]+\t([A-Z]{1}[a-zA-Z\s-]*)\t([A-Z]{1}[a-zA-Z\s-]*)\t.*(Software|Developer).*\t[^0-9]+\tPennsylvania$' candidates_1.txt candidates_2.txt
 ```
